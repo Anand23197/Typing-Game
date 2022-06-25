@@ -20,11 +20,12 @@ character.innerHTML = generateRandomCharacter();
 let start = true;
 
 
-
+var increase = 0;
  var startTime ;
  var elapsedTime;
 var interval;
-function startGame(increase){
+function startGame(){
+console.log(increase);
    startTime = Date.now();
    interval = setInterval(()=>{
      elapsedTime = (Date.now()-startTime) + increase;
@@ -35,10 +36,9 @@ function startGame(increase){
 
 
 inputText.addEventListener('keydown', (e)=>{
-    var increase = 0;
     //start the game
     if(start){
-        startGame(increase);
+        startGame();
         start = false;
     }
     
@@ -48,11 +48,11 @@ inputText.addEventListener('keydown', (e)=>{
         character.innerHTML = generateRandomCharacter();
         count++;
     }else{
-        increase = 0.5;
+        increase = 0.500;
     }
 
     //stop game and store best score
- if(count >= 5){
+ if(count >= 20){
     clearInterval(interval);
     const oldScore = Number(localStorage.getItem('timing'));
     if(oldScore == 0 || oldScore > Number(ms.innerHTML)){   

@@ -43,10 +43,13 @@ input{
     width: 30vw;
     left: 0;
     font-size: large;
+    border: none;
 }
 button{
     flex: 1;
     width: 20vw;
+    background-color: tomato;
+    border: none;
 }
 button:hover{
     cursor: pointer;
