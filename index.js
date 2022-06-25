@@ -22,13 +22,13 @@ let start = true;
 
 
  var startTime ;
-//  var elapsedTime;
+ var elapsedTime;
 var interval;
 function startGame(increase){
    startTime = Date.now();
    interval = setInterval(()=>{
-    elapsedTime = (Date.now()+increase) - startTime;
-    let tim = (elapsedTime/1000).toFixed(3);
+     elapsedTime = (Date.now()-startTime) + increase;
+     let tim = (elapsedTime/1000).toFixed(3);
    ms.innerHTML = tim;
 }, 100);
 }
