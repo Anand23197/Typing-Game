@@ -25,7 +25,8 @@ var increase = 0;
  var elapsedTime;
 var interval;
 function startGame(){
-console.log(increase);
+    increase += 5;
+    console.log(increase);
    startTime = Date.now();
    interval = setInterval(()=>{
      elapsedTime = (Date.now()-startTime) + increase;

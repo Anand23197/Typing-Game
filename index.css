@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: center; 
     text-align: center;
-    width: 51vw;
+    width: 50vw;
     background-color: rgb(27, 27, 91);
     border-radius: 10px 10px 0 0;
 }
@@ -28,9 +28,9 @@
      color: green;
     background-color: white;
     margin: 5px 5px;
-    height: 60px;
+    height: 80px;
     width: 40vw;
-    font-size: 50px;
+    font-size: 60px;
     border-radius: 5px;
 }
 
@@ -48,8 +48,9 @@ input{
 button{
     flex: 1;
     width: 20vw;
-    background-color: tomato;
+    background-color: rgb(220, 69, 55);
     border: none;
+    color: white;
 }
 button:hover{
     cursor: pointer;
