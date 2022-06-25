@@ -4,8 +4,12 @@ const character = document.querySelector('#character');
 const inputText = document.querySelector('input')
 const ms = document.querySelector('#ms');
 const sec = document.querySelector('#second');
-const myBestTime = document.querySelector('#my-best-time');
+const reset = document.getElementById('reset');
+let myBestTime = document.querySelector('#my-best-time');
+myBestTime.innerHTML = localStorage.getItem('timing')
 let count = 0;
+
+
 // taking input in text and changing character
 function generateRandomCharacter(){
     let innerChar = str.charAt(Math.floor(Math.random()*charlen));
@@ -13,22 +17,38 @@ function generateRandomCharacter(){
 }
 character.innerHTML = generateRandomCharacter();
 
-let start = 0;
+let start = true;
+
+
+
+ var startTime ;
+//  var elapsedTime;
+var interval;
+function startGame(increase){
+   startTime = Date.now();
+   interval = setInterval(()=>{
+    elapsedTime = (Date.now()+increase) - startTime;
+    let tim = (elapsedTime/1000).toFixed(3);
+   ms.innerHTML = tim;
+}, 100);
+}
+
+
 inputText.addEventListener('keydown', (e)=>{
+    var increase = 0;
     //start the game
-    if(start <= 0){
-        startGame();
-        start++;
+    if(start){
+        startGame(increase);
+        start = false;
     }
     
-
     let keyText = e.key.toUpperCase();
     let divChar = character.innerHTML.charAt(0);
     if(divChar === keyText ){
         character.innerHTML = generateRandomCharacter();
         count++;
     }else{
-       
+        increase = 0.5;
     }
 
     //stop game and store best score
@@ -37,7 +57,8 @@ inputText.addEventListener('keydown', (e)=>{
     const oldScore = Number(localStorage.getItem('timing'));
     if(oldScore == 0 || oldScore > Number(ms.innerHTML)){   
          localStorage.setItem('timing' , ms.innerHTML );
-         character.innerHTML = "Success!";
+                
+          character.innerHTML = "Success!";
     }else{
         character.innerHTML = "Failure!";
     }
@@ -45,19 +66,12 @@ inputText.addEventListener('keydown', (e)=>{
 })
 
 
-const startTime = Date.now();
- var elapsedTime;
-var interval;
-function startGame(){
- interval = setInterval(()=>{
-    elapsedTime = Date.now() - startTime;
-    let tim = (elapsedTime/1000).toFixed(3);
-    ms.innerHTML = tim;
-}, 100);
-}
 
 
 
+reset.addEventListener('click',()=>{
+ location.reload();
+})
 
 
 
