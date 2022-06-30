@@ -25,14 +25,12 @@ var increase = 0;
  var elapsedTime;
 var interval;
 function startGame(){
-    increase += 5;
-    console.log(increase);
    startTime = Date.now();
    interval = setInterval(()=>{
-     elapsedTime = (Date.now()-startTime) + increase;
+     elapsedTime = Date.now()-startTime
      let tim = (elapsedTime/1000).toFixed(3);
-   ms.innerHTML = tim;
-}, 100);
+     ms.innerHTML = (Number(tim) + increase).toFixed(3);
+  }, 100);
 }
 
 
@@ -49,11 +47,12 @@ inputText.addEventListener('keydown', (e)=>{
         character.innerHTML = generateRandomCharacter();
         count++;
     }else{
-        increase = 0.500;
+        increase += 0.5;
+        ms.innerHTML = (Number(ms.textContent)+ increase).toFixed(3);
     }
 
     //stop game and store best score
- if(count >= 20){
+ if(count >= 5){
     clearInterval(interval);
     const oldScore = Number(localStorage.getItem('timing'));
     if(oldScore == 0 || oldScore > Number(ms.innerHTML)){   
