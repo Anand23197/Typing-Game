@@ -6,9 +6,16 @@ const ms = document.querySelector('#ms');
 const sec = document.querySelector('#second');
 const reset = document.getElementById('reset');
 let myBestTime = document.querySelector('#my-best-time');
-myBestTime.innerHTML = localStorage.getItem('timing')
-let count = 0;
 
+let ls = localStorage.getItem('timing');
+
+//initial value of mybestTime
+if(ls === null ){
+    myBestTime.innerHTML = "0.000";
+}else{
+    myBestTime.innerHTML = ls;
+}
+let count = 0;
 
 // taking input in text and changing character
 function generateRandomCharacter(){
@@ -18,7 +25,6 @@ function generateRandomCharacter(){
 character.innerHTML = generateRandomCharacter();
 
 let start = true;
-
 
 var increase = 0;
  var startTime ;
@@ -64,9 +70,6 @@ inputText.addEventListener('keydown', (e)=>{
     }
  }
 })
-
-
-
 
 
 reset.addEventListener('click',()=>{
